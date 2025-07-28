@@ -8,7 +8,7 @@
 //     if(array[i]>max){
 //         max=array[i];
 //     }
-//     else if(array[i]<min){
+//     else if(array[i]<min){}
 //         min=array[i]
 //     }
 //    }
