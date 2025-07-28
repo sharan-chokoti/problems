@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #mytable th{
+      border:2px solid black;
+
+    }
+      #mytable td{
+      border:2px solid black;
+
+    }
+    
+    </style>
+</head>
+<body>
+   <h1>get the details of product</h1>
+   <form id="myform" action=""> 
+   <input type="text" name="" id="productid" placeholder="enter id"> 
+  <input type="submit" name="" id="btn" placeholder="getdetails">
+    
+   <button>click here</button>
+</form>
+<div id="output"></div>
+<table id="mytable">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+  <tbody id="tbody">
+    <tr></tr>
+  </tbody>
+</table>
+
+  <script>
+  document.getElementById("myform").addEventListener("click",getdata)
+  async function getdata(e){
+  e.preventDefault();
+  // let id=document.getElementById("productid").value
+try{
+ let res=await fetch(`https://fakestoreapi.com/products`);
+
+let data=await res.json();
+
+if(data){
+
+ let tbody=document.getElementById("tbody");
+ tbody.innerHTML="";
+ data.forEach(element => {
+ let tr=document.createElement("tr");
+ let td1=document.createElement("td");
+ td1.innerText=element.id;
+ let td2=document.createElement("td");
+ td2.innerText=element.title;
+ let td3=document.createElement("td");
+ td3.innerText=element.price;
+ 
+tr.appendChild(td1);
+tr.appendChild(td2);
+tr.appendChild(td3);
+tbody.appendChild(tr); });
+}
+  }
+
+catch(error){
+  document.getElementById("output").innerText=`error while fetching ${error.message}`
+}
+
+  }
+  </script>
+
+</body>
+</html>
+

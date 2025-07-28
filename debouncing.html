@@ -1,0 +1,178 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #searchBox1 {
+        padding: 5px;
+        height: 50px;
+        width: 700px;
+        border: 2px solid black;
+        font-size: larger;
+        font-weight: bolder;
+        margin: 20px 300px 0px 400px;
+      }
+       #searchBox2 {
+        padding: 5px;
+        height: 50px;
+        width: 700px;
+        border: 2px solid black;
+        font-size: larger;
+        font-weight: bolder;
+        margin: 20px 300px 0px 400px;
+      }
+
+      .submit-btn {
+        background-color: #4caf50; /* Green */
+        border: none;
+        color: white;
+        width:100px;
+        padding: 12px 24px;
+        text-align: center;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        margin:10px 700px;
+      }
+
+      h3{
+       text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+       
+     <h3>With debouncing</h3>
+      <input type="search" name="searchBox" id="searchBox1" placeholder="Type something" />
+      <input type="submit" value="Submit" class="submit-btn" />
+      <h3>Without debouncing</h3>
+      <input type="search" name="searchBox" id="searchBox2" placeholder="Type something" />
+      <input type="submit" value="Submit" class="submit-btn" />
+  
+
+    <script>
+
+  document.getElementById("searchBox1").addEventListener("input" ,function(event){
+    debouncesearch(event.target.value);
+  });
+
+  function debounce(func,delay){
+    let timer;
+    return function(event){
+      clearTimeout(timer);
+     timer= setTimeout(()=>{
+      func(event);
+     },delay)
+    }
+  }
+
+
+   function handlesearch(value){
+  console.log("search triggered value:",value)
+ }
+
+
+let debouncesearch=debounce(handlesearch,2000);
+
+
+// =============================================================================================
+
+
+  document.getElementById("searchBox2").addEventListener("input" ,function(event){
+    handlesearch1(event.target.value);
+  });
+
+   function handlesearch1(value){
+  console.log("search triggered value:",value)
+ } 
+
+
+</script>
+ </body>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- function debounce(func,delay){
+             let timeoutId;
+          return function(...args){ -->
+  <!-- //                clearTimeout(timeoutId); // cancel the previous timer
+  //       timeoutId = setTimeout(() => {
+  //         func.apply(this, args); // run the function after delay
+  //       }, delay);
+  //     };
+  //   } -->
+
+  <!-- //   // 👉 Function to run after debounce
+  //   function handleSearch(value) {
+  //     console.log("Search triggered for:", value);
+  //   }
+
+  //   // 👉 Wrap the handleSearch with debounce
+  //   const debouncedSearch = debounce(handleSearch, 1000);
+
+  //   // 👉 Add event listener to input box
+  //   document.getElementById("searchBox").addEventListener("input", function (e) {
+  //     debouncedSearch(e.target.value);
+  //   }); -->
+
+
+
+  <!-- //   function debounce(func,delay){
+  //     let timeout;
+  //     return function(...args){
+  //       clearTimeout(timeout);
+  //       timeout=setTimeout(() => {
+  //         func.apply(this,arguments);
+  //       },delay);
+  //     }
+  //   } -->
+     
+
+  <!-- //    function handlesearch(value){
+  //     console.log("search triggered value: ",value)
+  //   }
+
+  //   let debouncehandle=debounce(handlesearch,2000);
+
+  //  document.getElementById("searchBox").addEventListener("input",function(e){
+  //   debouncehandle(e.target.value)
+  //  })
+
+
+  </script>
+            
+   
+  </body>
+</html> -->

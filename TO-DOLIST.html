@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+
+<style>
+  h1{
+    text-align: center;
+    padding:10px;
+    height:50px;
+    width:500px;
+    border:2px solid black;
+    margin:20px;
+    color: rgb(219, 251, 41);
+    background-color: rgb(141, 88, 232);
+  }
+  #todoName{
+    height:40px;
+    width:300px;
+    margin:0 20px;
+  }
+  #addbtn{
+    width:80px;
+    height:40px;
+    
+  }
+
+  #btn{
+ height:40px;
+ width:100px;
+ margin:5px;
+  }
+
+
+</style>
+
+</head>
+<body>
+
+  <h1>TO DO LIST</h1>
+
+  <input type="text" id="todoName" placeholder="Things To Do">
+  <button onclick="addList()" id="addbtn">➕ ADD</button>
+  
+  <ul id="todolist"></ul>
+
+  <script>
+    function addList() {
+      const thingsToDo = document.getElementById("todoName").value;
+
+
+      // Create list item and buttons
+      const li = document.createElement("li");
+      li.textContent = thingsToDo;
+    
+  
+
+      const editBtn = document.createElement("button");
+      editBtn.textContent = "✏️ Edit";
+      editBtn.setAttribute("id","btn");
+      editBtn.onclick = function () {
+        const newText = prompt("Edit your task:", li.firstChild.textContent);
+        if (newText !== null) {
+           li.firstChild.textContent = newText;
+         } 
+      };
+
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "❌ Remove";
+      removeBtn.setAttribute("id","btn")
+      removeBtn.onclick = function () {
+        li.remove();
+      };
+
+      // Add buttons to list item
+      li.appendChild(editBtn);
+      li.appendChild(removeBtn);
+
+      // Add list item to the list
+      document.getElementById("todolist").appendChild(li);
+
+      // Clear input
+      document.getElementById("todoName").value = "";
+    }
+  </script>
+
+</body>
+</html>
